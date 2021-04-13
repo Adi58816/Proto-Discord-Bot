@@ -6,4 +6,4 @@ discord.py
 discord
 PyAudio
 youtube_dl
-sqlite3
+pysqlite3 
