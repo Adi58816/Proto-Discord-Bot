@@ -9,9 +9,13 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(administrator = True)
-    async def ban(self, ctx, member: discord.Member):
-        await member.send("You was banned :(")
-        await member.ban(reason="Ban!")
+    async def ban(self, ctx, member: discord.Member, *, reason: str = "No reason -_-"):
+        await member.ban(
+            reason=reason
+        )
+        await member.send(
+            "You was banned :("
+        )
 
     @commands.command()
     @commands.has_permissions(administrator = True)
@@ -29,34 +33,48 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def kick(self, ctx, member: discord.Member):
-        await member.send("You was kicked :(")
         await member.kick()
+        await member.send(
+            "You was kicked :("
+        )
 
     @commands.command(pass_context=True)
     @commands.has_permissions(administrator=True)
     async def clear(self, ctx, limit: int):
-        await ctx.channel.purge(limit=limit)
-        await ctx.send("Chat was cleaned by <@{.author.id}>".format(ctx))
+        await ctx.channel.purge(
+            limit = limit
+        )
+        await ctx.send(
+            "Chat was cleaned by <@{.author.id}>".format(ctx)
+        )
         
     @commands.command(pass_context=True)
     @commands.has_permissions(administrator=True)
     async def clear_all(self, ctx):
         await ctx.channel.purge()
-        await ctx.send("Chat was cleaned by <@{.author.id}>".format(ctx))
+        await ctx.send(
+            "Chat was cleaned by <@{.author.id}>".format(ctx)
+        )
 
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def send_to(self, ctx, member: discord.Member, *args):
-        await member.send(f"<{ctx.author.name}> sended you this message: {' '.join(args)}")
+        await member.send(
+            f"<{ctx.author.name}> sended you this message: {' '.join(args)}"
+        )
 
     @commands.command()
     @commands.has_permissions(administrator = True)
     async def addrole(self, ctx, member: discord.Member, role: discord.Role):
         try:
             await member.add_roles(role)
-            await ctx.send(f"<@{ctx.author.id}> has gived role {role} to <@{member.id}>")
+            await ctx.send(
+                f"<@{ctx.author.id}> has gived role {role} to <@{member.id}>"
+            )
         except:
-            await ctx.send(f"<@{ctx.author.id}> you are missing permissions")    \
+            await ctx.send(
+                f"<@{ctx.author.id}> you are missing permissions"
+            )    
 
     @commands.command()
     @commands.has_permissions(administrator = True)
