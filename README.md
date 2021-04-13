@@ -6,7 +6,7 @@ Just fun discord bot for YOUR SERVERS!
 
 
 ## Economic system!
-[image](https://user-images.githubusercontent.com/70207263/114545317-a18ab800-9c7d-11eb-8fa8-0229a415ddac.png)
+![image](https://user-images.githubusercontent.com/70207263/114545317-a18ab800-9c7d-11eb-8fa8-0229a415ddac.png)
 
 
 ## Server activity and level system
