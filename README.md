@@ -23,3 +23,19 @@ Just fun discord bot for YOUR SERVERS!
 
 ## Custom prefixes
 ![image](https://user-images.githubusercontent.com/70207263/114545648-07773f80-9c7e-11eb-8535-ad67c1041a29.png)
+
+## User Cards
+![image](https://user-images.githubusercontent.com/70207263/114546321-d21f2180-9c7e-11eb-9c5a-35f4c7460d8a.png)
+
+## Getting moneys from server activity level
+![image](https://user-images.githubusercontent.com/70207263/114546420-f11db380-9c7e-11eb-960b-43c325b800d0.png)
+
+## Shop 
+![image](https://user-images.githubusercontent.com/70207263/114546464-fd097580-9c7e-11eb-91a5-ae8835c6f449.png)
+
+(If you are adminstrator you can create shop exactly for your discord server!)
+
+## Moderation
+Bans, kicks, warns, anti spam and auto moderation!
+
+## Google translate and more ....
