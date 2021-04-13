@@ -32,3 +32,13 @@ CREATE TABLE `is_mining` (
    `member_id` INT,
    `mining` INT
 );
+
+CREATE TABLE `prefixes` (
+    `guild_id` INT,
+    `prefix` TEXT DEFAULT ">"
+)
+
+CREATE TABLE `log_channel` (
+    `guild_id` INT,
+    `channel_id` INT
+)
