@@ -20,3 +20,6 @@ Just fun discord bot for YOUR SERVERS!
 ## Mining system
 ![image](https://user-images.githubusercontent.com/70207263/114545465-d5fe7400-9c7d-11eb-92df-ffd78659e93b.png)
 ![image](https://user-images.githubusercontent.com/70207263/114545476-d991fb00-9c7d-11eb-98cf-44746b5d6753.png)
+
+## Custom prefixes
+![image](https://user-images.githubusercontent.com/70207263/114545648-07773f80-9c7e-11eb-8535-ad67c1041a29.png)
