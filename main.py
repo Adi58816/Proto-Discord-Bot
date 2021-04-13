@@ -72,7 +72,7 @@ for file in os.listdir("cogs"):
 # main function
 def main():
     logger.info(f"BOT WAS RUNNED SUCCESSFULY!")
-    bot.run(config.TOKEN)
+    bot.run(os.getenv("BOT_TOKEN"))
     logger.warning("BOT WAS STOPPED!")
 
 
