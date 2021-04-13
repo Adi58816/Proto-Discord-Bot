@@ -246,6 +246,18 @@ class EconomyCog(commands.Cog):
 		)
 		self.conn.commit()
 
+	@commands.has_permissions(administrator = True)
+	@commands.command()
+	async def del_shop_item(self, ctx, role: discord.Role):
+		self.cursor.execute(
+			"DELETE FROM economic_shop_item WHERE guild_id = ? AND role_id = ?",
+			(
+				ctx.guild.id,
+				role.id,
+			)
+		)
+		self.conn.commit()
+
 	def get_user_data(self, member, server):
 		self.cursor.execute(
 			"SELECT * FROM economic WHERE member_id = ? AND guild_id = ?",
