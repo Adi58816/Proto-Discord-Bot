@@ -7,4 +7,3 @@ discord
 PyAudio
 youtube_dl
 sqlite3
-pillow
