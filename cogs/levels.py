@@ -37,7 +37,7 @@ class LevelSystem(commands.Cog):
 
         if data == None:
             self.cursor.execute(
-            "INSERT INTO server_activity VALUES (?, ?, 0, 0)",
+                "INSERT INTO server_activity VALUES (?, ?, 0, 0)",
                 (
                     msg_guild.id,
                     msg_author.id
@@ -139,42 +139,41 @@ class LevelSystem(commands.Cog):
             user_data = self.get_user_data(msg_author, ctx.guild)
             server = ctx.guild
             self.cursor.execute(
-			    "UPDATE economic SET wallet_balance = ? WHERE member_id = ? AND guild_id = ?",
+                "UPDATE economic SET wallet_balance = ? WHERE member_id = ? AND guild_id = ?",
                 (
                     user_data[3] + (levels ** 3) * 1000,
                     msg_author.id,
                     server.id
                 )
-		    )
+            )
             self.conn.commit()
             await ctx.send(
                 f"You got {(levels ** 2) * 1000} 💸. (Level ^ 3 * 1000)"
             )
-    
 
     def get_user_data(self, member, server):
         self.cursor.execute(
-			"SELECT * FROM economic WHERE member_id = ? AND guild_id = ?",
+            "SELECT * FROM economic WHERE member_id = ? AND guild_id = ?",
             (
                 member.id,
                 server.id
             )
-		)
+        )
         data = self.cursor.fetchone()
         if data is None:
             self.cursor.execute(
-				"INSERT INTO economic VALUES (?, ?, 0, 0)",
+                "INSERT INTO economic VALUES (?, ?, 0, 0)",
                 (
                     server.id,
                     member.id
                 )
-			)
+            )
             self.conn.commit()
             data = self.cursor.fetchone()
             return (
-                server.id, 
-                member.id, 
-                0, 
+                server.id,
+                member.id,
+                0,
                 0
             )
         return data

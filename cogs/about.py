@@ -20,6 +20,10 @@ class AboutCog(commands.Cog):
 
     @commands.command()
     async def myroles(self, ctx):
+        """
+        :param ctx:
+        :return:
+        """
         member = ctx.message.author
         msg = "|\t"
         for role in member.roles:
@@ -32,6 +36,10 @@ class AboutCog(commands.Cog):
 
     @commands.command()
     async def name(self, ctx):
+        """
+        :param ctx:
+        :return:
+        """
         await ctx.send(
             "Your name is <@{.fauthor.id}>".format(
                 ctx
@@ -40,6 +48,11 @@ class AboutCog(commands.Cog):
 
     @commands.command()
     async def card(self, ctx, member: discord.Member):
+        """
+        :param ctx:
+        :param member:
+        :return:
+        """
         img = Image.open(
             'icon_template.png'
         )
@@ -47,8 +60,8 @@ class AboutCog(commands.Cog):
 
         try:
             response = requests.get(
-                url, 
-                stream = True
+                url,
+                stream=True
             )
             response = Image.open(
                 io.BytesIO(
@@ -60,9 +73,9 @@ class AboutCog(commands.Cog):
             )
             response = response.resize(
                 (
-                    100, 
+                    100,
                     100
-                ), 
+                ),
                 Image.ANTIALIAS
             )
         except:
@@ -70,7 +83,7 @@ class AboutCog(commands.Cog):
 
         try:
             img.paste(
-                response, 
+                response,
                 (15, 15, 115, 115)
             )
         except:
@@ -83,41 +96,41 @@ class AboutCog(commands.Cog):
         tag = member.discriminator
 
         headline = ImageFont.truetype(
-            "./Play-Regular.ttf", 
-            size = 17
+            "./Play-Regular.ttf",
+            size=17
         )
         undertext = ImageFont.truetype(
-            "./Play-Regular.ttf", 
-            size = 12
+            "./Play-Regular.ttf",
+            size=12
         )
         undertext2 = ImageFont.truetype(
-            "./Play-Regular.ttf", 
-            size = 10
+            "./Play-Regular.ttf",
+            size=10
         )
 
         idraw.text(
             (
-                120, 
+                120,
                 15
-            ), 
-            f'{name}#{tag}', 
-            font = headline)
+            ),
+            f'{name}#{tag}',
+            font=headline)
         idraw.text(
             (
-                120, 
+                120,
                 35
-            ), 
-            f'ID: {ctx.author.id}', 
-            font = undertext)
+            ),
+            f'ID: {ctx.author.id}',
+            font=undertext)
 
         time_stamp = member.created_at.timestamp()
         time_formated = datetime.fromtimestamp(
             time_stamp
         ).strftime("%A, %B %d, %Y %I:%M:%S")
         idraw.text(
-            (120, 55), 
-            f'Date of registration: {time_formated}', 
-            font = undertext2
+            (120, 55),
+            f'Date of registration: {time_formated}',
+            font=undertext2
         )
 
         img.save(
@@ -131,6 +144,10 @@ class AboutCog(commands.Cog):
 
     @commands.command()
     async def whoami(self, ctx):
+        """
+        :param ctx:
+        :return:
+        """
         if ctx.message.author.guild_permissions.administrator:
             await ctx.send(
                 "<@{.author.id}> are administrator".format(
@@ -144,8 +161,13 @@ class AboutCog(commands.Cog):
                 )
             )
 
+
     @commands.command()
     async def avatar(self, ctx):
+        """
+        :param ctx:
+        :return:
+        """
         author = ctx.author
         await ctx.send(
             author.avatar_url
@@ -153,11 +175,26 @@ class AboutCog(commands.Cog):
 
     @commands.command()
     async def guild_name(self, ctx):
+        """
+        :param ctx:
+        :return:
+        """
         await ctx.send(
             ctx.guild.name
         )
 
+    @commands.command()
+    @commands.has_permissions()
+    async def logs(self, ctx):
+        logs = open("logs/log.log", encoding="utf-8").read()
+        result = ""
+        for element in logs.split("\n"):    
+            for word in element.split():
+                if word == str(ctx.guild.id):
+                    result += element + "\n"
+                    continue
+        await ctx.author.send(f"```{result}```")
+
 # setup for cog
 def setup(client):
     client.add_cog(AboutCog(client))
-    
