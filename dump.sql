@@ -42,3 +42,9 @@ CREATE TABLE `log_channel` (
     `guild_id` INT,
     `channel_id` INT
 )
+
+CREATE TABLE `moneys_for_voice_activity` (
+    `guild_id` INT,
+    `channel_id` INT,
+    `moneys_per_minute` INT
+)
